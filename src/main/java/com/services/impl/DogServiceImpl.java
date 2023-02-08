@@ -20,6 +20,22 @@ public class DogServiceImpl implements DogService {
     }
 
     @Override
+    public DogDto alterDog(DogDto dogDto) {
+        Dog alter = dogDtoToEntity(dogDto);
+        Dog dog = dogRepository.findById(alter.getId()).orElseThrow(() -> new EntityNotFoundException("Dog not found"));
+
+
+        dog.setName(alter.getName());
+        dog.setRace(alter.getRace());
+        dog.setBirthDate(alter.getBirthDate());
+
+        // Save the dog entity
+        dog = dogRepository.save(dog);
+        // Return the new dto
+        return dogEntityToDto(dog);
+    }
+
+    @Override
     public DogDto saveDog(DogDto dogDto) {
         // Converts the dto to the dog entity
         Dog dog = dogDtoToEntity(dogDto);

@@ -49,5 +49,12 @@ public class DogController {
 	public Boolean deleteDog(@PathVariable Long id){
 		return dogService.deleteDog(id);
 	}
-	
+
+	/**
+	 * Alter a dog in the system
+	 */
+	@PutMapping
+	public  DogDto alterDog(final @RequestBody DogDto dogDto){
+		return dogService.alterDog(dogDto);
+	}
 }

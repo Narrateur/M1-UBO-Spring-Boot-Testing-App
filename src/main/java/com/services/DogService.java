@@ -8,6 +8,11 @@ public interface DogService {
     /**
      * Sauve a dog
      */
+    DogDto alterDog(DogDto dogDto);
+
+    /**
+     * Sauve a dog
+     */
     DogDto saveDog(DogDto dogDto);
 
     /**
