@@ -10,7 +10,7 @@ public class ConcertDto {
     private Long Id;
     private Date date_debut;
     private Date date_fin;
-    private int salle_id;
+    private long salle_id;
     private double prix;
 
 }
