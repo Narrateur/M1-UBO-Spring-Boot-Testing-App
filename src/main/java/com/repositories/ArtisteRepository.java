@@ -1,4 +1,7 @@
 package com.repositories;
 
-public interface ArtisteRepository {
+import com.entities.Artiste;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ArtisteRepository extends JpaRepository<Artiste, Long> {
 }
