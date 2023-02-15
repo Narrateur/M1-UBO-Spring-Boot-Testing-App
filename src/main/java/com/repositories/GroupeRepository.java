@@ -1,8 +1,9 @@
 package com.repositories;
 
+import com.entities.Groupe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ConcertRepository extends JpaRepository<Concert, Long> {
+public interface GroupeRepository extends JpaRepository<Groupe, Long>{
 }

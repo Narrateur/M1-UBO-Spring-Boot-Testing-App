@@ -2,18 +2,21 @@ package com.entities;
 
 import java.time.LocalDate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "t_groupe_grp")
-public class Groupe {
+public class Artiste {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "grp_id")
     private Long Id;
     private String nom;
     private String description;
+    private int nb_membres;
 
 }
