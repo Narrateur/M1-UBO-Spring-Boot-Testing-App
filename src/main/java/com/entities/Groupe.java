@@ -13,7 +13,9 @@ public class Groupe {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "grp_id")
     private Long Id;
+    @Column(name = "grp_nom")
     private String nom;
+    @Column(name = "grp_description")
     private String description;
 
 }
