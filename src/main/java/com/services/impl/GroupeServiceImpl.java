@@ -69,7 +69,6 @@ public class GroupeServiceImpl implements GroupeService{
      */
     private GroupeDto groupeEntityToDto(Groupe groupe){
         GroupeDto groupeDto = new GroupeDto();
-        groupeDto.setId(groupe.getId());
         groupeDto.setNom(groupe.getNom());
         groupeDto.setDescription(groupe.getDescription());
         return groupeDto;
@@ -80,7 +79,6 @@ public class GroupeServiceImpl implements GroupeService{
      */
     private Groupe groupeDtoToEntity(GroupeDto groupeDto){
         Groupe groupe = new Groupe();
-        groupe.setId(groupeDto.getId());
         groupe.setNom(groupeDto.getNom());
         groupe.setDescription(groupeDto.getDescription());
         return groupe;

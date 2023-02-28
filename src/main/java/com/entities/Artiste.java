@@ -26,8 +26,8 @@ public class Artiste {
     private int age;
 
     // a voir
-    @Column(name = "art_id")
-    private Groupe groupe;
+    @Column(name = "grp_id")
+    private int groupe;
 
 
 }

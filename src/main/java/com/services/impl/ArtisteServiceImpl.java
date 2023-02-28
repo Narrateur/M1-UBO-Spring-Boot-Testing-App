@@ -24,7 +24,12 @@ public class ArtisteServiceImpl implements ArtisteService{
         Artiste alter = artisteDtoToEntity(artisteDto);
         Artiste artiste = artisteRepository.findById(alter.getId()).orElseThrow(() -> new EntityNotFoundException("Artiste not found"));
 
-        artiste.setDescription(alter.getDescription());
+        artiste.setAge(alter.getAge());
+        artiste.setNom(alter.getNom());
+        artiste.setPrenom(alter.getPrenom());
+        artiste.setPseudo(alter.getPseudo());
+        artiste.setVille(artisteDto.getVille());
+        artiste.setGroupe(artisteDto.getGroupe());
 
         // Save the artiste entity
         artiste = artisteRepository.save(artiste);
@@ -71,7 +76,11 @@ public class ArtisteServiceImpl implements ArtisteService{
         ArtisteDto artisteDto = new ArtisteDto();
         artisteDto.setId(artiste.getId());
         artisteDto.setNom(artiste.getNom());
-        artisteDto.setDescription(artiste.getDescription());
+        artisteDto.setPrenom(artiste.getPrenom());
+        artisteDto.setPseudo(artiste.getPseudo());
+        artisteDto.setVille(artiste.getVille());
+        artisteDto.setAge(artiste.getAge());
+        artisteDto.setGroupe(artiste.getGroupe());
         return artisteDto;
     }
 
@@ -82,7 +91,11 @@ public class ArtisteServiceImpl implements ArtisteService{
         Artiste artiste = new Artiste();
         artiste.setId(artisteDto.getId());
         artiste.setNom(artisteDto.getNom());
-        artiste.setDescription(artisteDto.getDescription());
+        artiste.setPrenom(artisteDto.getPrenom());
+        artiste.setPseudo(artisteDto.getPseudo());
+        artiste.setVille(artisteDto.getVille());
+        artiste.setAge(artisteDto.getAge());
+        artiste.setGroupe(artisteDto.getGroupe());
         return artiste;
     }
 }
