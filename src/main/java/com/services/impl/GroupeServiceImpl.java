@@ -1,7 +1,11 @@
 package com.services.impl;
 
+import com.controllers.ArtisteController;
+import com.dtos.ArtisteDto;
 import com.dtos.GroupeDto;
+import com.entities.Artiste;
 import com.entities.Groupe;
+import com.repositories.ArtisteRepository;
 import com.repositories.GroupeRepository;
 import com.services.GroupeService;
 import org.springframework.stereotype.Service;
@@ -14,9 +18,11 @@ import java.util.List;
 public class GroupeServiceImpl implements GroupeService{
 
     private final GroupeRepository groupeRepository;
+    private final ArtisteRepository artisteRepository;
 
-    public GroupeServiceImpl(GroupeRepository groupeRepository) {
+    public GroupeServiceImpl(GroupeRepository groupeRepository, ArtisteRepository artisteRepository) {
         this.groupeRepository = groupeRepository;
+        this.artisteRepository = artisteRepository;
     }
 
     @Override
@@ -69,8 +75,27 @@ public class GroupeServiceImpl implements GroupeService{
      */
     private GroupeDto groupeEntityToDto(Groupe groupe){
         GroupeDto groupeDto = new GroupeDto();
+        groupeDto.setId(groupe.getId());
         groupeDto.setNom(groupe.getNom());
         groupeDto.setDescription(groupe.getDescription());
+
+        List<Artiste> allArtistes = this.artisteRepository.findAll();
+        List<ArtisteDto> artistes_groupe = new ArrayList<>();
+        ArtisteDto artisteDto = new ArtisteDto();
+        for(Artiste a : allArtistes){
+            if(a.getGroupe() == groupe.getId()){
+                artisteDto.setId(a.getId());
+                artisteDto.setNom(a.getNom());
+                artisteDto.setPrenom(a.getPrenom());
+                artisteDto.setPseudo(a.getPseudo());
+                artisteDto.setVille(a.getVille());
+                artisteDto.setAge(a.getAge());
+                artisteDto.setGroupe(a.getGroupe());
+                artistes_groupe.add(artisteDto);
+            }
+        }
+        groupeDto.setArtistes(artistes_groupe);
+
         return groupeDto;
     }
 
@@ -79,8 +104,27 @@ public class GroupeServiceImpl implements GroupeService{
      */
     private Groupe groupeDtoToEntity(GroupeDto groupeDto){
         Groupe groupe = new Groupe();
+        groupe.setId(groupeDto.getId());
         groupe.setNom(groupeDto.getNom());
         groupe.setDescription(groupeDto.getDescription());
+
+        List<Artiste> allArtistes = this.artisteRepository.findAll();
+        List<ArtisteDto> artistes_groupe = new ArrayList<>();
+        ArtisteDto artisteDto = new ArtisteDto();
+        for(Artiste a : allArtistes){
+            if(a.getGroupe() == groupeDto.getId()){
+                artisteDto.setId(a.getId());
+                artisteDto.setNom(a.getNom());
+                artisteDto.setPrenom(a.getPrenom());
+                artisteDto.setPseudo(a.getPseudo());
+                artisteDto.setVille(a.getVille());
+                artisteDto.setAge(a.getAge());
+                artisteDto.setGroupe(a.getGroupe());
+                artistes_groupe.add(artisteDto);
+            }
+        }
+        groupe.setArtistes(artistes_groupe);
+
         return groupe;
     }
 }

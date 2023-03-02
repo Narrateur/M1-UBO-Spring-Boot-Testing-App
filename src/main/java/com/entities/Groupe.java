@@ -1,9 +1,11 @@
 package com.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
+import com.dtos.ArtisteDto;
 import lombok.Data;
 
 @Entity
@@ -17,5 +19,6 @@ public class Groupe {
     private String nom;
     @Column(name = "grp_description")
     private String description;
-
+    @Transient
+    private List<ArtisteDto> artistes;
 }
