@@ -81,9 +81,9 @@ public class GroupeServiceImpl implements GroupeService{
 
         List<Artiste> allArtistes = this.artisteRepository.findAll();
         List<ArtisteDto> artistes_groupe = new ArrayList<>();
-        ArtisteDto artisteDto = new ArtisteDto();
         for(Artiste a : allArtistes){
             if(a.getGroupe() == groupe.getId()){
+                ArtisteDto artisteDto = new ArtisteDto();
                 artisteDto.setId(a.getId());
                 artisteDto.setNom(a.getNom());
                 artisteDto.setPrenom(a.getPrenom());
@@ -110,9 +110,9 @@ public class GroupeServiceImpl implements GroupeService{
 
         List<Artiste> allArtistes = this.artisteRepository.findAll();
         List<ArtisteDto> artistes_groupe = new ArrayList<>();
-        ArtisteDto artisteDto = new ArtisteDto();
         for(Artiste a : allArtistes){
             if(a.getGroupe() == groupeDto.getId()){
+                ArtisteDto artisteDto = new ArtisteDto();
                 artisteDto.setId(a.getId());
                 artisteDto.setNom(a.getNom());
                 artisteDto.setPrenom(a.getPrenom());

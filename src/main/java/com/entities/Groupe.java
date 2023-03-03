@@ -19,6 +19,6 @@ public class Groupe {
     private String nom;
     @Column(name = "grp_description")
     private String description;
-    @Transient
+    @Transient // pour pas le persister dans la bdd
     private List<ArtisteDto> artistes;
 }
